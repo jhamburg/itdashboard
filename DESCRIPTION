@@ -1,0 +1,9 @@
+Package: ITDashboard
+Type: Package
+Title: Functions to Work with Data from the ITDashboard
+Version: 0.1.0
+Author: Jonathan Hamburg
+Maintainer: Jonathan Hamburg <jhamburg88@gmail.com>
+Description: More about what it does (maybe more than one line)
+License: MIT
+LazyData: TRUE
