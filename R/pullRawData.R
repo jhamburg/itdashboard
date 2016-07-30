@@ -69,3 +69,15 @@ agency <- as.data.table(fromJSON(agencyWWW)$result)
 bureau <- as.data.table(fromJSON(bureauWWW)$result)
 brmcode <- as.data.table(fromJSON(brmcodeWWW)$result)
 asoapg <- as.data.table(fromJSON(asoapgWWW)$result)
+
+dts <- c('portfolio', 'provIT', 'infra', 'funding', 'bcase', 'tsol',
+         'tsolurl', 'invelim', 'invrelurl', 'lifecosts', 'contracts',
+         'cioRat', 'projects', 'activities', 'perform', 'performact',
+         'invbase', 'invTrends', 'agency', 'bureau', 'brmcode', 'asoapg')
+
+#-----------------------------------
+# Save the data to disc
+#-----------------------------------
+for (i in dts){
+  saveRDS(get(i), file = file.path('data','rds', '2016', i))
+}
