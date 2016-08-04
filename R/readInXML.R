@@ -17,10 +17,10 @@ readInXMLs <- function(yr){
     cat(paste(x, '\n\n'))
     # Need to take out IT Portfolio Funding Sources due to 
     # issues with the XML file
-    if (x != 'ITPortfolio_Funding_Sources.xml'){
+    if (grepl('.xml', x, ignore.case = TRUE)){
       res <- as.data.table(xmlToDataFrame(file.path(dir, x)))
     } else {
-      res <- data.table("")
+      res <- fread(file.path(dir, x))
     }
     return(res)
   }
@@ -30,4 +30,3 @@ readInXMLs <- function(yr){
   return(raw)
 }
 
-aa <- readInXMLs(2013)
