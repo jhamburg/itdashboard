@@ -30,3 +30,14 @@ readInXMLs <- function(yr){
   return(raw)
 }
 
+#years <- c(2012, 2013, 2014, 2015)
+years <- c(2013, 2014, 2015)
+
+# Save data from XML file to RDS
+saveDataToRDS <- function(yr){
+  res <- readInXMLs(yr)
+  saveDir <- file.path('data','rds', yr)
+  lapply(res, function(x) saveRDS(x, file.path(saveDir, names(x))))
+}
+
+lapply(years, saveDataToRDS)
