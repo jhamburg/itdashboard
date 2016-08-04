@@ -13,7 +13,17 @@ readInXMLs <- function(yr){
   fnms <- substr(files, 1, regexpr("\\.xml", files) - 1)
   updFnms <- updVarNames(fnms)
   
-  xmlReadFunc <- function(x) as.data.table(xmlToDataFrame(file.path(dir, x)))
+  xmlReadFunc <- function(x){
+    cat(paste(x, '\n\n'))
+    # Need to take out IT Portfolio Funding Sources due to 
+    # issues with the XML file
+    if (x != 'ITPortfolio_Funding_Sources.xml'){
+      res <- as.data.table(xmlToDataFrame(file.path(dir, x)))
+    } else {
+      res <- data.table("")
+    }
+    return(res)
+  }
   
   raw <- lapply(files, xmlReadFunc)
   names(raw) <- updFnms
